@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>SliderCalculator party example</title>
+<style>
+/**
+ * Generic
+ */
+.sliderCalculator {font:12px Arial, sans-serif; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; user-select:none;}
+.sliderCalculator .icon {background-repeat:no-repeat; margin:0 auto; position:relative;}
+.sliderCalculatorBar {background:#f3f2f1; border:1px solid; border-color:#c5c4c4 #e6e6e6 #e6e6e6; margin:56.5px 0 0 110px;}
+.sliderCalculatorBarDisplay {color:#fff; position:absolute; bottom:100%; left:100%; z-index:2;}
+.sliderCalculatorBarDisplayText {background:#333; margin-bottom:6px; padding:5px 8px; white-space:nowrap;}
+.sliderCalculatorBarDisplayCount {font-weight:bold;}
+.sliderCalculatorBarLegend {color:#333; margin:1px 0 0 110px;}
+.sliderCalculatorBarLegend .max {float:right;}
+.sliderCalculatorRange {background:#ccc; position:relative; width:0; height:15px;}
+.sliderCalculatorHandle {background:#000; position:absolute; top:0; right:-10px; width:20px; height:100%;}
+.sliderCalculatorDisplay {border-radius:50%; color:#fff; display:inline-block; font-weight:bold; position:relative; text-align:center; z-index:1;}
+.sliderCalculatorDisplay sup {position:relative; vertical-align:baseline; top:-5px;}
+.sliderCalculatorButton {background:#bf284e; box-shadow:inset 0 -1px 1px rgba(0, 0, 0, .5); color:#fff; cursor:pointer; display:block; font-weight:bold; line-height:34px; margin:6px 15% 0;}
+.sliderCalculatorButton:active {box-shadow:inset 0 1px 3px rgba(0, 0, 0, .5);}
+.sliderCalculatorMultipliers {border:1px solid #e6e6e6; border-bottom:2px solid #ccc; height:260px; margin-bottom:45px;}
+.sliderCalculatorMultiplier {float:left; height:130px; padding:0 3% 0 2%; width:45%;}
+.sliderCalculatorMultiplier .sliderCalculatorDisplay {float:left; margin:30px 0 0; width:70px; height:70px;}
+.sliderCalculatorMultiplicands {border:solid #e6e6e6; border-width:1px 0 0 1px; overflow:hidden; width:100%;}
+.sliderCalculatorMultiplicand {border:solid #e6e6e6; border-width:0 1px 1px 0; float:left; margin:-1px 0 0 -1px; text-align:center; height:165px; width:20%;}
+.sliderCalculatorMultiplicand h3 {margin:0;}
+.sliderCalculatorMultiplicand h3 em {color:#666; display:block; font-style:normal; font-weight:normal;}
+.sliderCalculatorMultiplicand .sliderCalculatorDisplay {height:46px; line-height:46px; margin-top:-35px; margin-left:70px; width:46px;}
+.sliderCalculatorMultiplicand .sliderCalculatorDisplay span {position:absolute; top:0; left:0; width:100%;}
+.sliderCalculatorMultiplicand .icon {height:70px; margin-top:25px;}
+
+/**
+ * Specific
+ */
+.partyCalculator {}
+.partyCalculator .sliderCalculatorDisplay {background:#b42447;}
+.partyCalculator .sliderCalculatorBar {}
+.partyCalculator .sliderCalculatorRange {background:#bf284e;}
+.partyCalculator .sliderCalculatorHandle {top:-2px; width:20px; height:20px;}
+.partyCalculator .men, .partyCalculator .teens {border-right:1px dotted #ccc;}
+.partyCalculator .women, .partyCalculator .children {margin-left:-1px;}
+.partyCalculator .children .sliderCalculatorBarDisplay {margin-left:-93px; text-align:center; width:185px;}
+.partyCalculator .children .sliderCalculatorBarDisplayText {padding-left:0; padding-right:0;}
+</style>
+</head>
+<body>
+
+<h1>Party calculator</h1>
+<div class="sliderCalculator partyCalculator">
+	<h2>Select the number of guests</h2>
+	<div class="sliderCalculatorMultipliers">
+		<div class="sliderCalculatorMultiplier men">
+			<div class="sliderCalculatorDisplay">
+				<div class="icon"></div>
+			</div>
+			<div class="sliderCalculatorBar" data-uom="Men" data-range="1|200" data-out="doritos+1|candies+3|cake+100|water+150|juice+200|beer+5|area+1|chairs+1/4|tables+1/8"></div>
+			<div class="sliderCalculatorBarLegend">
+				<span class="max">200</span>
+				<span class="min">1</span>
+			</div>
+		</div>
+		<div class="sliderCalculatorMultiplier women">
+			<div class="sliderCalculatorDisplay">
+				<div class="icon"></div>
+			</div>
+			<div class="sliderCalculatorBar" data-uom="Women" data-range="1|200" data-out="doritos+1/2|candies+8|cake+150|water+300|juice+500|beer+1|area+1.5|chairs+1/4|tables+1/8"></div>
+			<div class="sliderCalculatorBarLegend">
+				<span class="max">200</span>
+				<span class="min">1</span>
+			</div>
+		</div>
+		<div class="sliderCalculatorMultiplier teens">
+			<div class="sliderCalculatorDisplay">
+				<div class="icon"></div>
+			</div>
+			<div class="sliderCalculatorBar" data-uom="Teens" data-range="1|200" data-out="doritos+1/2|candies+6|cake+150|water+300|juice+500|area+1.5|chairs+1/4|tables+1/8"></div>
+			<div class="sliderCalculatorBarLegend">
+				<span class="max">200</span>
+				<span class="min">1</span>
+			</div>
+		</div>
+		<div class="sliderCalculatorMultiplier children">
+			<div class="sliderCalculatorDisplay">
+				<div class="icon"></div>
+			</div>
+			<div class="sliderCalculatorBar" data-uom="Children above 6 years" data-range="1|200" data-out="doritos+1/2|candies+6|cake+150|water+300|juice+500|area+1.5|chairs+1/4|tables+1/8"></div>
+			<div class="sliderCalculatorBarLegend">
+				<span class="max">200</span>
+				<span class="min">1</span>
+			</div>
+		</div>
+	</div>
+	<h2>See quantity for party</h2>
+	<div class="sliderCalculatorMultiplicands">
+		<div class="sliderCalculatorMultiplicand doritos">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="doritos"></span>
+			</div>
+			<h3>Doritos</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand candiess">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="candies"></span>
+			</div>
+			<h3>Candiess</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand cake">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="cake" data-uom="g|kg"></span>
+			</div>
+			<h3>Cake</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand water">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="water" data-uom="ml|l"></span>
+			</div>
+			<h3>Water</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand juice">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="juice" data-uom="ml|l"></span>
+			</div>
+			<h3>Juice</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand beer">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="beer"></span>
+			</div>
+			<h3>Beer <em>(350ml)</em></h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand area">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="area" data-uom="m2"></span>
+			</div>
+			<h3>Area</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand chairs">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="chairs"></span>
+			</div>
+			<h3>Chairs</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand tables">
+			<div class="icon"></div>
+			<div class="sliderCalculatorDisplay">
+				<span id="tables"></span>
+			</div>
+			<h3>Tables</h3>
+		</div>
+		<div class="sliderCalculatorMultiplicand print">
+			<div class="icon"></div>
+			<a class="sliderCalculatorButton">Print</a>
+		</div>
+	</div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="SliderCalculator.js"></script>
+<script>
+$('.sliderCalculatorBar').sliderCalculator();
+</script>
+
+</body>
+</html>
